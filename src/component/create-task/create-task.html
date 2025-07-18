@@ -1,0 +1,40 @@
+<div>
+    <form (ngSubmit)="createTask()" class="task-form">
+        <input
+        type="text"
+        [(ngModel)]="label"
+        name="title"
+        placeholder="Titre de la task"
+        required
+        >
+        <button type="submit">Crée la task mgl</button>
+    </form>
+
+   
+</div>
+
+<div>
+
+     <form (ngSubmit)="updateLabel()" class="label-form" style="margin-top: 2rem;">
+        <input type="text" [(ngModel)]="taskIdToUpdate" name="taskIdToUpdate" placeholder="Id de la task" required>
+        <input type="text" [(ngModel)]="label" name="labelUpdate" placeholder="Nouveau label" required>
+        <button type="submit">Modifie mgl</button>
+    </form>
+
+</div>
+
+<div>
+    <h3>Mes tasks</h3>
+    <ol>
+    <li *ngFor="let task of tasks">
+        <p>ID: {{ task.id }}</p>
+        <strong>{{ task.label }} </strong>
+        <button (click)="deleteTask(task.id)">Supprime mgl</button>
+    </li>
+    </ol>
+
+    <ng-template #noTasks>
+        <p>Aucune task trouvée</p>
+    </ng-template>
+
+</div>
